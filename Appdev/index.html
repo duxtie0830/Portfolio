@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rojan Gabriel Calipusan | Portfolio</title>
+  <meta name="description" content="Personal portfolio of Rojan Gabriel Calipusan, BSIT student at Ateneo de Davao University." />
+  <style>
+    :root{
+      --bg:#0f172a;
+      --card:#111827;
+      --soft:#1f2937;
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --accent:#38bdf8;
+      --accent-2:#22c55e;
+      --white:#ffffff;
+      --shadow:0 20px 40px rgba(0,0,0,.25);
+      --radius:20px;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,.14), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(34,197,94,.12), transparent 22%),
+        linear-gradient(180deg, #020617 0%, #0f172a 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{
+      width:min(92%, var(--max));
+      margin:auto;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:48px 0;
+    }
+
+    .hero-grid{
+      width:100%;
+      display:grid;
+      grid-template-columns: 1.3fr .9fr;
+      gap:32px;
+      align-items:center;
+    }
+
+    .card{
+      background:rgba(17,24,39,.82);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-text{
+      padding:40px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      font-size:.9rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--accent);
+      margin-bottom:14px;
+      font-weight:700;
+    }
+
+    h1{
+      font-size:clamp(2.1rem, 5vw, 4.2rem);
+      line-height:1.08;
+      margin-bottom:14px;
+    }
+
+    .subtitle{
+      color:var(--muted);
+      font-size:1.05rem;
+      max-width:650px;
+      margin-bottom:24px;
+    }
+
+    .info-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .pill{
+      padding:10px 14px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:999px;
+      font-size:.95rem;
+      color:#dbeafe;
+    }
+
+    .buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:10px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:700;
+      transition:.25s ease;
+      border:1px solid transparent;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg, var(--accent), #0ea5e9);
+      color:#082f49;
+    }
+
+    .btn-secondary{
+      background:transparent;
+      border-color:rgba(255,255,255,.14);
+      color:var(--white);
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      opacity:.96;
+    }
+
+    .hero-photo{
+      padding:24px;
+    }
+
+    .photo-frame{
+      background:linear-gradient(145deg, rgba(56,189,248,.18), rgba(255,255,255,.03));
+      border-radius:24px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .photo-box{
+      width:100%;
+      aspect-ratio: 1 / 1.08;
+      border-radius:20px;
+      overflow:hidden;
+      position:relative;
+      background:
+        linear-gradient(135deg, rgba(56,189,248,.18), rgba(34,197,94,.18)),
+        #0b1220;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      border:1px dashed rgba(255,255,255,.18);
+    }
+
+    .photo-box img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .photo-placeholder{
+      padding:24px;
+      color:#cbd5e1;
+    }
+
+    .photo-placeholder strong{
+      display:block;
+      font-size:1.1rem;
+      margin-bottom:8px;
+      color:#f8fafc;
+    }
+
+    main{
+      padding:0 0 60px;
+    }
+
+    .section{
+      margin-top:28px;
+      padding:28px;
+    }
+
+    .section h2{
+      font-size:1.55rem;
+      margin-bottom:18px;
+      color:#f8fafc;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .timeline-item,
+    .project,
+    .skill-group{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:16px;
+      padding:18px;
+    }
+
+    .item-title{
+      font-size:1.05rem;
+      font-weight:700;
+      color:#f8fafc;
+      margin-bottom:6px;
+    }
+
+    .item-sub{
+      color:var(--accent);
+      font-weight:700;
+      margin-bottom:4px;
+    }
+
+    .item-meta{
+      color:var(--muted);
+      font-size:.95rem;
+      margin-bottom:10px;
+    }
+
+    ul{
+      padding-left:20px;
+    }
+
+    li{
+      margin-bottom:8px;
+    }
+
+    .skills-wrap{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .tag{
+      font-size:.92rem;
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(56,189,248,.12);
+      border:1px solid rgba(56,189,248,.22);
+      color:#e0f2fe;
+    }
+
+    footer{
+      padding:26px 0 40px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    @media (max-width: 900px){
+      .hero{
+        min-height:auto;
+        padding-top:28px;
+      }
+      .hero-grid,
+      .grid-2,
+      .skills-wrap{
+        grid-template-columns:1fr;
+      }
+      .hero-photo{
+        order:-1;
+      }
+      .hero-text{
+        padding:28px;
+      }
+    }
+
+    @media (max-width: 560px){
+      .section{
+        padding:22px;
+      }
+      .hero-text{
+        padding:22px;
+      }
+      .pill{
+        width:100%;
+        text-align:center;
+      }
+      .buttons .btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-grid">
+      <section class="card hero-text">
+        <span class="eyebrow">BSIT Student Portfolio</span>
+        <h1>Rojan Gabriel Calipusan</h1>
+        <p class="subtitle">
+          A second-year Bachelor of Science in Information Technology student at Ateneo de Davao University
+          with hands-on experience building console-based systems using Python, Java, HTML, CSS, and MySQL.
+        </p>
+
+        <div class="info-row">
+          <div class="pill">📧 rgmcalipusan@addu.edu.ph</div>
+          <div class="pill">📱 00959139411</div>
+          <div class="pill">📍 Kapalong, Davao del Norte</div>
+        </div>
+
+        <div class="buttons">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#skills" class="btn btn-secondary">See Skills</a>
+        </div>
+      </section>
+
+      <aside class="card hero-photo">
+        <div class="photo-frame">
+          <div class="photo-box">
+
+            <div class="photo-placeholder">
+              <strong>Add Your Recent Photo</strong>
+              <img src="gradpic.jpeg" alt="profile"> 
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card section" id="education">
+      <h2>Education</h2>
+      <div class="timeline-item">
+        <div class="item-title">Bachelor of Science in Information Technology</div>
+        <div class="item-sub">Ateneo de Davao University</div>
+        <div class="item-meta">Second Year Student</div>
+        <p>
+          Currently developing core skills in programming, databases, web development,
+          and systems analysis through academic projects and laboratory work.
+        </p>
+      </div>
+    </section>
+
+    <section class="grid-2" id="projects">
+      <section class="card section">
+        <h2>Projects</h2>
+
+        <article class="project">
+          <div class="item-title">Student Enrollment System</div>
+          <div class="item-sub">Python • Object-Oriented Programming</div>
+          <ul>
+            <li>Built a structured enrollment system using OOP concepts and clean code organization.</li>
+            <li>Implemented student, course, and enrollment features with input validation and error handling.</li>
+            <li>Focused on readability, modularity, and practical academic use cases.</li>
+          </ul>
+        </article>
+
+        <article class="project" style="margin-top:16px;">
+          <div class="item-title">Shopping System</div>
+          <div class="item-sub">Console-Based Program</div>
+          <ul>
+            <li>Created a menu-driven shopping application for handling item selection and basic transaction flow.</li>
+            <li>Applied programming fundamentals such as conditionals, loops, and data handling.</li>
+            <li>Strengthened problem-solving skills through user-focused program design.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="card section" id="skills">
+        <h2>Skills</h2>
+        <div class="skills-wrap">
+          <div class="skill-group">
+            <div class="item-title">Programming</div>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Java</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="item-title">Web Development</div>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">Responsive Design</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="item-title">Database & Networking</div>
+            <div class="tags">
+              <span class="tag">MySQL</span>
+              <span class="tag">Basic Networking</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="project" style="margin-top:18px;">
+          <div class="item-title">Strengths</div>
+          <ul>
+            <li>Clean code structure and logical problem solving</li>
+            <li>Foundational object-oriented programming skills</li>
+            <li>Ability to create beginner-friendly functional systems</li>
+          </ul>
+        </article>
+      </section>
+    </section>
+
+    <section class="grid-2" style="margin-top:0;">
+      <section class="card section">
+        <h2>Affiliation</h2>
+        <div class="timeline-item">
+          <div class="item-title">Student at Ateneo de Davao University</div>
+          <p>
+            Active learner in the Information Technology program, continuously improving technical
+            and academic skills through coursework and project development.
+          </p>
+        </div>
+      </section>
+
+      <section class="card section">
+        <h2>Achievements</h2>
+        <div class="timeline-item">
+          <div class="item-title">Academic Achiever</div>
+          <p>
+            Recognized for maintaining strong academic performance while building technical skills
+            in software and systems development.
+          </p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+    </div>
+  </footer>
+</body>
+</html>
